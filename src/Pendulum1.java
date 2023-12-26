@@ -1,5 +1,5 @@
 public class Pendulum1 {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+      new Simulation(0.1, 0);
     }
 }
