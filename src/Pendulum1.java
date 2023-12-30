@@ -7,6 +7,6 @@ public class Pendulum1 {
             System.out.println("Missing command line parameter");
             System.out.println("Default angle = " + angleInDegree + " degrees");
         }
-        new Simulation(angleInDegree / 180 * Math.PI, 0);
+        new Simulation(angleInDegree / 180 * Math.PI, 0, 0.5, 1.2, 2.0/3.0);
     }
 }
