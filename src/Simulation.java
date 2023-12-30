@@ -4,19 +4,20 @@ public class Simulation {
   private double t1 = -1; // Negative values are invalid
   private double t2 = -1;
   Simulation(double theta0, double omega0) {
-    double theta, thetaMid, thetaPrev, omega, omegaMid, alpha, alphaMid, t, dt, tmax;
+    double theta, thetaMid, thetaPrev, omega, omegaMid, alpha, alphaMid, t, dt, tMax, damp;
     t = 0;
     dt = 0.01;
-    tmax = 100;
-    Plot plot = new Plot("Theta in function of t", 0, 100, 1, -0.5, 0.5, 0.1);
+    tMax = 100;
+    damp = 0.1;
+    Plot plot = new Plot("Theta in function of t", 0, 100, 1, -5, 5, 0.5);
     plot.setPointSize(1);
     theta = theta0;
     omega = omega0;
-    while (t < tmax) {
-      alpha = -Math.sin(theta);
+    while (t < tMax) {
+      alpha = -Math.sin(theta) - damp * omega;
       thetaMid = theta + omega * 0.5 * dt;
       omegaMid = omega + alpha * 0.5 * dt;
-      alphaMid = -Math.sin(thetaMid);
+      alphaMid = -Math.sin(thetaMid) - damp * omegaMid;
       thetaPrev = theta;
       theta += omegaMid * dt;
       omega += alphaMid * dt;
